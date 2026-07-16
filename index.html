@@ -1016,9 +1016,10 @@ window.addEventListener('load', () => {
         activeMissions = missions;
       }
     }).catch(() => { activeMissions = missions; });
-  } else {
-    activeMissions = missions; // 데모 모드: 내장 미션 사용
   }
+  // 데모 모드에서는 기본 미션을 로그인 시점(login)에서 채운다.
+  // (이 콜백 안에서 아래에 const로 선언되는 missions를 이 시점에 참조하면
+  //  아직 초기화 전이라 오류가 나므로, 여기서는 건드리지 않는다.)
 
   // ── 학생 목록 로드 (연동/데모 모드 분기) ──
   if (isConnected()) {
